@@ -27,6 +27,8 @@ const Login = () => {
     logIn(email, password)
       .then(() => {
         setLogInSuccess("Login successfully");
+
+        // navigate
         return navigate("/");
       })
       .catch((err) => {
@@ -51,7 +53,7 @@ const Login = () => {
       console.log("please provide a valid email");
     }
 
-    // forget pass reset email
+    //get forget pass reset email
     sendPasswordResetEmail(auth, email)
       .then(() => {
         alert("check your email");
