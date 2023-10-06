@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuthContext from "../hooks/useAuthContext";
 
 const Navbar = () => {
+  const { user, logOut } = useAuthContext();
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -83,7 +85,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Login</a>
+          <h3>{user?.displayName}</h3>
+          {user ? (
+            <button onClick={() => logOut()}>Logout</button>
+          ) : (
+            <Link to={"/login"}>Login</Link>
+          )}
         </div>
       </div>
     </div>
